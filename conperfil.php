@@ -17,7 +17,6 @@ $sql = "SELECT
             p.nome AS peca,
             p.preco,
             p.quantidade,
-            p.preco_fornecedor,
             f.nome AS fornecedor,
             f.cidade
         FROM pecas p
