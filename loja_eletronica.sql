@@ -14,7 +14,6 @@ CREATE TABLE pecas (
     nome VARCHAR(100) NOT NULL,
     preco DECIMAL(10,2),
     quantidade INT,
-    preco_fornecedor DECIMAL(10,2),
     id_fornecedor INT,
     CONSTRAINT fk_fornecedor
     FOREIGN KEY (id_fornecedor)
