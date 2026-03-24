@@ -8,21 +8,18 @@ error_reporting(E_ALL);
 require_once 'conexao.php';
 $con->set_charset("utf8");
 
-// leitura de entrada (mantido igual ao professor)
 json_decode(file_get_contents('php://input'), true);
 
-// SQL adaptado pro seu banco
 $sql = "SELECT 
-            p.id_peca,
-            p.nome AS peca,
-            p.preco,
-            p.quantidade,
-            f.nome AS fornecedor,
-            f.cidade
-        FROM pecas p
-        JOIN fornecedores f
-        ON p.id_fornecedor = f.id_fornecedor";
-
+    p.id_peca,
+    p.nome AS peca,
+    p.preco,
+    p.quantidade,
+    f.nome AS fornecedor,
+    f.cidade
+FROM pecas p
+JOIN fornecedores f
+ON p.id_fornecedor = f.id_fornecedor;
 $result = $con->query($sql);
 
 $response = [];
@@ -41,7 +38,6 @@ if ($result && $result->num_rows > 0) {
     ];
 }
 
-// saída em JSON (igual ao professor)
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
